@@ -1,0 +1,9 @@
+$primary-color: #fff;
+$primary-font: 'Kalam', cursive;
+
+@mixin box($width, $heigth) {
+    width: $width;
+    height: $heigth;
+    border-radius: 3px;
+    //background-color: rgba($color: #000, $alpha: 0.6);
+}
