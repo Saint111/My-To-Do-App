@@ -1,5 +1,13 @@
 $primary-color: #fff;
 $primary-font: 'Kalam', cursive;
+$primary-shadow: 0 0 3px white;
+
+%h3 {
+    margin-bottom: 0;
+    padding-top: 1rem;
+    font-family: $primary-font;
+    text-align: center;
+}
 
 @mixin box($width, $heigth) {
     width: $width;
