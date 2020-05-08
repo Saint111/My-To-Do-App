@@ -1,0 +1,69 @@
+.my-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: $transparent-bg;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+
+    .my-modal-content {
+        @include box(330px, 210px);
+        width: 330px;
+        height: 210px;
+        font-family: $primary-font;
+        background-color: #e5e09d;
+        border: 3px outset #a52a2a;
+        box-shadow: 0 0 6px black;
+        border-radius: 6px;
+
+        .my-modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 60px;
+            transition: transform 0.3s ease-in-out;
+
+            h5 {
+                text-indent: 1em;
+            }
+
+            button {
+                background-color: transparent;
+                height: 100%;
+
+                i {
+                    font-size: 30px;
+                    color: #e5e09d;
+                    padding-top: 10px;
+                    pointer-events: none;
+                }
+            }
+        }
+
+        .my-modal-body {
+            @include box(100%, calc(100% - 60px));
+            color: #a52a2a;
+            padding-top: 30px;
+
+            input {
+                font-family: $primary-font;
+                font-size: 1.2em;
+                color: #111;
+            }
+        }
+    }
+
+    .my-modal-show-animation {
+        transform: scale(1);
+    }
+}
+
+.my-modal-hide {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+}

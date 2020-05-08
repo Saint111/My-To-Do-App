@@ -3,54 +3,51 @@
 html,
 body {
     height: 100vh;
-}
 
-.bg-container {
-    background: $primary-color url('../images/Office-Supplies.jpg') no-repeat
-        scroll center;
-    background-size: cover;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-flow: column wrap;
-    overflow: hidden;
-
-    .my-content {
-        @include box(330px, 510px);
-        margin-top: 4.5rem;
-        position: relative;
-        //background-color: $test-c1;
-
-        h3 {
-            @extend %h3;
-        }
-
-        ul {
-            width: 95%;
-            //background-color: $test-c2;
-
-            li {
-                font-family: $primary-font;
-                font-size: 1.2em;
-                list-style: circle;
-                list-style-position: outside;
-                margin: 0;
-
-                p {
-                    margin: 0;
+    .bg-container {
+        background: $primary-color url('../images/Office-Supplies.jpg') no-repeat
+            scroll center;
+        background-size: cover;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-flow: column wrap;
+        overflow: hidden;
+    
+        .my-content {
+            @include box(330px, 510px);
+            margin-top: 4.5rem;
+            position: relative;
+            //background-color: $test-c1;
+    
+            h3 {
+                @extend %header;
+            }
+    
+            h6 {
+                @extend %header;
+            }
+    
+            ul {
+                width: 95%;
+                font-size: 15px;
+                //background-color: $test-c2;
+    
+                li {
+                    font-family: $primary-font;
+                    font-size: 1.2em;
+                    list-style: circle;
+                    list-style-position: outside;
+    
+                    p {
+                        margin: 0;
+                    }
                 }
             }
         }
-
-        div.row {
-            width: 100%;
-            margin: 0;
-            padding: 0 0 0 9px;
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            @extend %bg-transparent;
-        }
     }
 }
+
+@import 'modal';
+@import 'toast';
