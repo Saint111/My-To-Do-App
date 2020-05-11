@@ -29,5 +29,4 @@ $test-c2: rgba(
 @mixin box($width, $heigth) {
     max-width: $width;
     height: $heigth;
-    //background-color: rgba($color: #000, $alpha: 0.6);
 }
