@@ -5,8 +5,8 @@ body {
     height: 100vh;
 
     .bg-container {
-        background: $primary-color url('../images/Office-Supplies.jpg') no-repeat
-            scroll center;
+        background: $primary-color url('../images/Office-Supplies.jpg')
+            no-repeat scroll center;
         background-size: cover;
         height: 100%;
         display: flex;
@@ -14,32 +14,30 @@ body {
         align-items: center;
         flex-flow: column wrap;
         overflow: hidden;
-    
+
         .my-content {
             @include box(330px, 510px);
             margin-top: 4.5rem;
             position: relative;
-            //background-color: $test-c1;
-    
+
             h3 {
                 @extend %header;
             }
-    
+
             h6 {
                 @extend %header;
             }
-    
+
             ul {
                 width: 95%;
                 font-size: 15px;
-                //background-color: $test-c2;
-    
+
                 li {
                     font-family: $primary-font;
                     font-size: 1.2em;
                     list-style: circle;
                     list-style-position: outside;
-    
+
                     p {
                         margin: 0;
                     }
