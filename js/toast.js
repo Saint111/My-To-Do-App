@@ -3,39 +3,34 @@ export const Toast = {
         this.timeout = null;
         this.el = document.createElement('div');
         this.el.className = 'my-toast';
+        document.body.appendChild(this.el);
     },
 
     html(options) {
         return `
-            <div class="my-toast my-toast-${options.class}">
-                <h5>Message: ${options.title}</h5>
-                <p>${options.message}</p>
-            </div>
+            <h5>Message: ${options.title}</h5>
+            <p>${options.message}</p>
         `;
     },
 
     show(options = {}) {
         options = Object.assign(
             {
-                class: 'show',
                 title: 'Default title',
                 message: 'Default message',
             },
             options
         );
-
-        document.body.insertAdjacentHTML('beforeend', this.html(options));
-
+        this.el.classList += ' my-toast-show';
+        this.el.innerHTML = this.html(options);
         this.timeout = setTimeout((e) => {
             document.body.lastElementChild.classList.replace(
                 'my-toast-show',
                 'my-toast-hide'
             );
-            location.reload();
-            // const toast = document.querySelectorAll('.my-toast');
-            // document.body.lastElementChild.removeChild(
-            //     document.body.lastElementChild
-            // );
+            const toast = document.body.querySelector('.my-toast-hide');
+            document.body.removeChild(toast);
+            //location.reload();
             clearTimeout(this.timeout);
         }, 1500);
     },
