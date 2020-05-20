@@ -1,0 +1,13 @@
+@media screen and (max-width: 1200px) {
+    .my-content {
+        padding-top: 4em;
+        width: 260px;
+
+        button.blue,
+        button.orange,
+        button.red {
+            display: block;
+            width: 100%;
+        }
+    }
+}
