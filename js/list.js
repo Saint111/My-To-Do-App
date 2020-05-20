@@ -1,9 +1,6 @@
 export default class List {
     constructor(container) {
         this.container = container;
-        this.LIST = null;
-        this.ID = null;
-
         const data = localStorage.getItem('TASK');
 
         if (data) {
@@ -24,9 +21,9 @@ export default class List {
         const CHECK = check
             ? `
                 <button
-                    class="btn-small orange waves-effect waves-light right"
+                    class="btn-small orange waves-effect waves-light left"
                 >
-                    Undone <i class="material-icons left">check_box</i>
+                    Undone <i class="material-icons right">check_box</i>
                 </button>`
             : `
                 <button
@@ -65,42 +62,34 @@ export default class List {
         const data = localStorage.getItem('TASK');
         const LIST = JSON.parse(data);
         const parent = element.target.parentNode;
-        if (
-            element.target.tagName === 'BUTTON' &&
-            parent.hasAttribute('data-check')
-        ) {
-            const check = JSON.parse(parent.attributes['data-check'].value)
-                ? true
-                : false;
+        const tag = element.target.tagName;
+        const button = element.target;
+        const id = JSON.parse(parent.dataset.id);
 
-            if (check) {
-                element.target.classList.replace('orange', 'blue');
-                element.target.innerHTML =
-                    'DONE <i class="material-icons right">check_box_outline_blank<i>';
-                parent.setAttribute('data-check', 'false');
-                element.target.previousElementSibling.setAttribute(
-                    'class',
-                    'uncheck'
-                );
-                LIST[parent.dataset.id].check = JSON.parse(
-                    parent.dataset.check
-                );
-            } else {
-                element.target.classList.replace('blue', 'orange');
-                element.target.innerHTML =
-                    'UNDONE <i class="material-icons right">check_box<i>';
-                parent.setAttribute('data-check', 'true');
-                element.target.previousElementSibling.setAttribute(
-                    'class',
-                    'check'
-                );
-                LIST[parent.dataset.id].check = JSON.parse(
-                    parent.dataset.check
-                );
+        //console.log('This:', LIST[JSON.parse(parent.dataset.id)]);
+        console.log('This:', localStorage.getItem('TASK'));
+
+        if (tag === 'BUTTON') {
+            if (button.classList.contains('blue')) {
+                button.classList.replace('blue', 'orange');
+                button.innerHTML =
+                    'Undone <i class="material-icons right">check_box</i>';
+                button.previousElementSibling.setAttribute('class', 'check');
+                LIST[id].check = parent.dataset.check = true;
+            } else if (button.classList.contains('orange')) {
+                button.classList.replace('orange', 'blue');
+                button.innerHTML =
+                    'Done <i class="material-icons right">check_box_outline_blank</i>';
+                button.previousElementSibling.setAttribute('class', 'uncheck');
+                LIST[id].check = parent.dataset.check = false;
+            } else if (button.classList.contains('red')) {
+                parent.style.display = 'none';
+                LIST[id].remove = parent.dataset.remove = true;
             }
-            console.log('CHECK UPDATE:', LIST[JSON.parse(parent.dataset.id)]);
+
             localStorage.setItem('TASK', JSON.stringify(LIST));
-            console.log(localStorage.getItem('TASK'));
+            //console.log('Now:', LIST[JSON.parse(parent.dataset.id)]);
+            console.log('Now:', localStorage.getItem('TASK'));
         }
     }
 }
